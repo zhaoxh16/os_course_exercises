@@ -52,7 +52,7 @@
 - 理解list_entry双向链表数据结构及其4个基本操作函数和ucore中一些基于它的代码实现（此题不用填写内容）
 
 - 对于如下的代码段，请说明":"后面的数字是什么含义
-```
+```C
  /* Gate descriptors for interrupts and traps */
  struct gatedesc {
     unsigned gd_off_15_0 : 16;        // low 16 bits of offset in segment
@@ -67,9 +67,11 @@
  };
 ```
 
+​ 	**Answer**: C语言中变量声明后面加冒号表示为该变量设置存储所需要的位数。这种数据结构被称为“位	域”或“位段”。
+
 - 对于如下的代码段，
 
-```
+```C
 #define SETGATE(gate, istrap, sel, off, dpl) {            \
     (gate).gd_off_15_0 = (uint32_t)(off) & 0xffff;        \
     (gate).gd_ss = (sel);                                \
@@ -83,12 +85,14 @@
 }
 ```
 如果在其他代码段中有如下语句，
-```
+```C
 unsigned intr;
 intr=8;
 SETGATE(intr, 1,2,3,0);
 ```
 请问执行上述指令后， intr的值是多少？
+
+​	**Answer**: 0x20003
 
 ### 课堂实践练习
 
